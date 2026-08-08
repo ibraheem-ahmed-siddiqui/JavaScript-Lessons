@@ -24,7 +24,7 @@ import readline from "readline/promises";
 // console.log(total);
 
 
-// i = 1;
+// let i = 1;
 // while (let i <= 5) {
 //     console.log(i);
 //     i++;
@@ -72,45 +72,55 @@ const r = readline.createInterface(
     }
 );
 
-let inputNum = 0;
+async function takeInput() {
 
-do {
+    let inputNum = 0;
 
-    inputNum = await r.question("Enter a number: ");
+    do {
 
-    if (inputNum === "" || inputNum === null) {
-        console.log("Input can't be null");
-    } else if (isNaN(inputNum)) {
-        console.log("Invalid Number");
-    } else if (inputNum < 1) {
-        console.log("Input can't be lower than 1");
-    } else if (inputNum > 1000) {
-        console.log("Input is out of range");
-    }
+        inputNum = await r.question("Enter a number: ");
 
-} while (inputNum === "" || inputNum === null || inputNum < 1 || inputNum > 1000 || isNaN(inputNum));
+        if (inputNum === "" || inputNum === null) {
+            console.log("Input can't be null");
+        } else if (isNaN(inputNum)) {
+            console.log("Invalid Number");
+        } else if (inputNum < 1) {
+            console.log("Input can't be lower than 1");
+        } else if (inputNum > 1000) {
+            console.log("Input is out of range");
+        }
 
-inputNum = Number(inputNum);
+    } while (inputNum === "" || inputNum === null || inputNum < 1 || inputNum > 1000 || isNaN(inputNum));
 
-let sum = 0;
-let evenCount = 0;
-let oddCount = 0;
-
-for (let i = 1; i <= inputNum; i++) {
-
-    console.log(i, "--", i % 2 === 0 ? "Even" : "Odd");
-    sum += i;
-
-    if (i % 2 === 0) {
-        evenCount += 1;
-    } else if (i % 2 !== 0) {
-        oddCount += 1;
-    }
+    return Number(inputNum);
 }
 
-console.log("\n");
-console.log(`Sum : ${sum}`);
-console.log(`Even Count : ${evenCount}`);
-console.log(`Odd Count : ${oddCount}`);
+async function main() {
 
-r.close();
+    let num = await takeInput();
+
+    let sum = 0;
+    let evenCount = 0;
+    let oddCount = 0;
+
+    for (let i = 1; i <= num; i++) {
+
+        console.log(i, "--", i % 2 === 0 ? "Even" : "Odd");
+        sum += i;
+
+        if (i % 2 === 0) {
+            evenCount += 1;
+        } else {
+            oddCount += 1;
+        }
+    }
+
+    console.log("\n");
+    console.log(`Sum : ${sum}`);
+    console.log(`Even Count : ${evenCount}`);
+    console.log(`Odd Count : ${oddCount}`);
+
+    r.close();
+}
+
+main();
