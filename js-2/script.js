@@ -4,6 +4,7 @@ let password = prompt("Enter your password: ");
 
 if (username === "" || username === null || password === "" || password === null) {
     alert("Please enter both username and password.");
+    
 } else {
 
     if (username === "admin" && password === "12345") {
