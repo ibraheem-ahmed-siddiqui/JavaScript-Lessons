@@ -12,7 +12,7 @@ console.log("\n");
 console.log("Learning Functions");
 console.log("\n");
 
-const students = [
+const Class_A = [
     { name: "Ali", marks: 85 },
     { name: "Ibrahim", marks: 92 },
     { name: "Ahmed", marks: 67 },
@@ -45,7 +45,7 @@ function isPassed(student) {
     return (mark >= 40) ? "Pass" : "Fail";
 }
 
-function getAverage() {
+function getAverage(students) {
 
     let totalMarks = 0;
     let markCount = 0;
@@ -61,7 +61,7 @@ function getAverage() {
     return (average);
 }
 
-function getHighestStudent() {
+function getHighestStudent(students) {
 
     let highestMark = 0;
 
@@ -77,7 +77,7 @@ function getHighestStudent() {
     
 }
 
-function getLowestStudent() {
+function getLowestStudent(students) {
     
     let lowestMark = 100;
     
@@ -97,11 +97,11 @@ function printStudent(student) {
 }
 
 function main() {
-    console.log(`The average marks of the class are : ${getAverage()}`)
-    console.log(`The highest marks of the class are : ${getHighestStudent()}`)
-    console.log(`The lowest marks of the class are : ${getLowestStudent()}\n`)
+    console.log(`The average marks of the class are : ${getAverage(Class_A)}`)
+    console.log(`The highest marks of the class are : ${getHighestStudent(Class_A)}`)
+    console.log(`The lowest marks of the class are : ${getLowestStudent(Class_A)}\n`)
 
-    console.log(`Student AlI's Data : \n${printStudent(students[0])}`)
+    console.log(`Student AlI's Data : \n${printStudent(Class_A[0])}`)
 }
 
 main();
