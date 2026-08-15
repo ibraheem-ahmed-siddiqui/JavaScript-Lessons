@@ -22,33 +22,33 @@ function markFuncition() {
 
     let fullMarkCount = 0;
     
-    for (let mark of marks) {
+    for (let i = 0; i < marks.length; i++) {
 
-        console.log(`Marks of student [${marks.indexOf(mark) + 1}] are (${mark}/100)`);
+        console.log(`Marks of student [${marks.length}] are (${marks[i]}/100)`);
 
-        totalMarks += mark;
+        totalMarks += marks[i];
         
-        if(mark > highestMark) {
-            highestMark = mark;
+        if(marks[i] > highestMark) {
+            highestMark = marks[i];
         }
 
-        if(mark < lowestMark) {
-            lowestMark = mark;
+        if(marks[i] < lowestMark) {
+            lowestMark = marks[i];
         }
 
-        if( mark >= 40) {
+        if( marks[i] >= 40) {
             studentPassCount += 1;
         } else {
             studentFailCount += 1;
         }
 
-        if( mark === 100) {
+        if( marks[i] === 100) {
             fullMarkCount += 1;
         }
 
     }
 
-    const averageMarks = Math.round(totalMarks/(marks.length + 1));
+    const averageMarks = Math.round(totalMarks/(marks.length));
 
     console.log("\n");
 
