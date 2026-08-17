@@ -41,7 +41,7 @@ function getGrade(student) {
 
 function isPassed(student) {
 
-    let mark = student.marks;
+    const mark = student.marks;
     return (mark >= 40) ? "Pass" : "Fail";
 }
 
@@ -73,7 +73,7 @@ function getHighestStudent(students) {
     }
     
     const highestStudent = students.find((student) => student.marks === highestMark);
-    return highestStudent.name;
+    return highestStudent;
     
 }
 
@@ -86,20 +86,20 @@ function getLowestStudent(students) {
     }
     
     const lowestStudent = students.find((student) => student.marks === lowestMark);
-    return lowestStudent.name;
+    return lowestStudent;
 
 }
 
 function printStudent(student) {
-    studentGrade = getGrade(student);
-    passCheck = isPassed(student);
+    const studentGrade = getGrade(student);
+    const passCheck = isPassed(student);
     return `${student.name} — ${student.marks} marks — ${studentGrade} — ${passCheck}`;
 }
 
 function main() {
     console.log(`The average marks of the class are : ${getAverage(Class_A)}`)
-    console.log(`The highest marks of the class are : ${getHighestStudent(Class_A)}`)
-    console.log(`The lowest marks of the class are : ${getLowestStudent(Class_A)}\n`)
+    console.log(`The highest marks of the class are : ${getHighestStudent(Class_A).name}`)
+    console.log(`The lowest marks of the class are : ${getLowestStudent(Class_A).name}\n`)
 
     console.log(`Student AlI's Data : \n${printStudent(Class_A[0])}`)
 }
