@@ -56,49 +56,47 @@
 
 function printStudentMarks(students) {
 
-    for (student of students) {
+    for (const student of students) {
         console.log(`The marks of ${student.name} are : ${student.marks}`);
     }
 }
 
-function printHighestStudent(students) {
+function getHighestStudent(students) {
 
-    let highestMark = 0;
+    let highestMark = -Infinity;
 
-    for (student of students) {
+    for (const student of students) {
 
         if (student.marks > highestMark) {
             highestMark = student.marks;
         }
     }
 
-    return students.find((student) => student.marks === highestMark);
+    return students.find(student => student.marks === highestMark);
 }
 
-function printLowestStudent(students) {
+function getLowestStudent(students) {
 
     let lowestMark = Infinity;
 
-    for (student of students) {
+    for (const student of students) {
 
         if (student.marks < lowestMark) {
             lowestMark = student.marks;
         }
     }
 
-    return students.find((student) => student.marks === lowestMark);
+    return students.find(student => student.marks === lowestMark);
 }
 
-function printStudentsAbove70(students) {
+function getStudentsAbove70(students) {
 
-    return students.filter((student) => {
-        student.marks >= 70;
-    })
+    return students.filter((student) =>  student.marks >= 70);
 }
 
 function printStudentData(student) {
 
-    console.log(`${student.name} — ${student.marks} — ${student.skills}`);
+    console.log(`${student.name} — ${student.marks} — ${student.skills.join(", ")}`);
 }
 
 function main() {
@@ -132,7 +130,17 @@ function main() {
         passed: true
     }
 
-    const { name, marks } = students[1];
+    const highest = getHighestStudent(students);
+    const lowest = getLowestStudent(students);
+    const above70 = getStudentsAbove70(students);
+
+    console.log(`Highest Student: ${highest.name} with ${highest.marks} marks`)
+    console.log(`Lowest Student: ${lowest.name} with ${lowest.marks} marks`)
+    console.log(`Students Above 70: ${above70.name} with ${above70.marks} marks`)
+
+    const { name, marks } = students[2];
+    console.log(name);
+    console.log(marks);
 
     printStudentData(students[1]);
 
