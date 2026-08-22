@@ -28,16 +28,21 @@ function createVault(password) {
             console.log("Invalid Password");
         }
     }
-    
+
+    function logout() {
+        isLoggedIn = false;
+        return checkAcces();
+    }
+
     function addSecret(secret) {
         secrets.push(secret);
         console.log(`Secret Added`);
     }
-    
+
     function getSecrets() {
         return secrets;
     }
-    
+
     function isLoggedIn() {
         return isLoggedInFlag;
     }
@@ -48,11 +53,13 @@ function createVault(password) {
             return {
                 addSecret,
                 getSecrets,
-                isLoggedIn
+                isLoggedIn,
+                logout
             }
+
         } else {
 
-            return {login};
+            return { login };
         }
     }
 
@@ -62,13 +69,27 @@ function createVault(password) {
 
 function main() {
 
-    let vault1 = createVault(123);
-    vault1 = vault1.login(123);
-    vault1.addSecret("My API key");
-    vault1.addSecret("My private note");
-    vault1.addSecret("My account password");
-    vault1.addSecret("My bank account details");
-    vault1.getSecrets().forEach((secret) => console.log(`1. ${secret}`));
+    let vault = createVault("12345");
+
+    // console.log(vault.isLoggedIn());
+
+    // vault.addSecret("Secret 1");
+
+    vault.login("wrong");            // Incorrect password
+
+    vault = vault.login("12345");            // Login successful
+
+    vault.addSecret("Secret 1");
+    vault.addSecret("My API key");
+    vault.addSecret("My private note");
+    vault.addSecret("My account password");
+    vault.addSecret("My bank account details");
+    
+    vault.getSecrets().forEach((secret) => console.log(`1. ${secret}`));
+
+    vault.logout();
+
+    console.log(vault.isLoggedIn()); // false
 
 }
 
