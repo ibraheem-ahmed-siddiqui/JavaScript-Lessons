@@ -11,13 +11,12 @@ console.log("\n");
 
 function createVault(password) {
 
-    const pass = password;
     const secrets = [];
     let isLoggedInFlag = false;
 
     function login(checkpassword) {
 
-        if (checkpassword === pass) {
+        if (checkpassword === password) {
 
             console.log("Logged In!");
             isLoggedInFlag = true;
@@ -30,7 +29,7 @@ function createVault(password) {
     }
 
     function logout() {
-        isLoggedIn = false;
+        isLoggedInFlag = false;
         return checkAcces();
     }
 
@@ -40,7 +39,7 @@ function createVault(password) {
     }
 
     function getSecrets() {
-        return secrets;
+        return [...secrets];
     }
 
     function isLoggedIn() {
@@ -53,6 +52,7 @@ function createVault(password) {
             return {
                 addSecret,
                 getSecrets,
+            
                 isLoggedIn,
                 logout
             }
@@ -87,7 +87,7 @@ function main() {
     
     vault.getSecrets().forEach((secret) => console.log(`1. ${secret}`));
 
-    vault.logout();
+    vault = vault.logout();
 
     console.log(vault.isLoggedIn()); // false
 
