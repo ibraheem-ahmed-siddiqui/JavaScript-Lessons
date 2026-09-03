@@ -24,12 +24,22 @@ changeMessageButton.addEventListener("click", () => {
 
 const list = document.getElementById("list");
 
+const html = document.createElement("li");
+html.textContent = "HTML";
+list.append(html);
 
-list.append(document.createElement("li").textContent = "HTML");
-list.append(document.createElement("li").textContent = "CSS");
-list.append(document.createElement("li").textContent = "JavaScript");
+const css = document.createElement("li");
+css.textContent = "CSS";
+list.append(css);
 
-const clearSkillsButton = document.body.append(document.createElement("button").textContent = "Clear Skills".classList.add("clearSkills-button"));
+const js = document.createElement("li");
+js.textContent = "JavaScript";
+list.append(js);
+
+const clearSkillsButton =document.createElement("button");
+clearSkillsButton.textContent = "Clear Skills";
+clearSkillsButton.classList.add("clearSkills-button");
+document.body.append(clearSkillsButton);
 
 clearSkillsButton.addEventListener("click", () => {
 
