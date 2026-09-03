@@ -1,5 +1,9 @@
 
-const paraList = ["Keep learning.", "You're making progress.", "Build something today."];
+const paraList = ["Keep learning.",
+    "You're making progress.",
+    "Build something today.",
+    "Never stop experimenting."
+];
 
 const darkModeButton = document.getElementById("darkMode-button");
 const changeMessageButton = document.getElementById("messageChange-button");
@@ -12,33 +16,28 @@ darkModeButton.addEventListener("click", () => {
 });
 
 let i = 0;
+const message = document.getElementById("message");
 
 changeMessageButton.addEventListener("click", () => {
-    if (i > 2) {
+    if (i > paraList.length - 1) {
         i = 0;
     }
-    const message = document.getElementById("message");
     message.textContent = paraList[i];
     i++;
 });
 
 const list = document.getElementById("list");
 
-const html = document.createElement("li");
-html.textContent = "HTML";
-list.append(html);
+const skillsList = ["HTML", "CSS", "JavaScript"]
 
-const css = document.createElement("li");
-css.textContent = "CSS";
-list.append(css);
-
-const js = document.createElement("li");
-js.textContent = "JavaScript";
-list.append(js);
+skillsList.forEach((name) => {
+    li = document.createElement("li");
+    li.textContent = name;
+    list.append(li);
+});
 
 const clearSkillsButton =document.createElement("button");
 clearSkillsButton.textContent = "Clear Skills";
-clearSkillsButton.classList.add("clearSkills-button");
 document.body.append(clearSkillsButton);
 
 clearSkillsButton.addEventListener("click", () => {
